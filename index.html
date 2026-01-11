@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banana Ramble - Apps & Toys for Kids</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+            background: #ffffff;
+        }
+
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .floating-shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .shape1 {
+            width: 150px;
+            height: 150px;
+            background: #FFE082;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape2 {
+            width: 100px;
+            height: 100px;
+            background: #81C784;
+            top: 60%;
+            right: 15%;
+            animation-delay: 1s;
+        }
+
+        .shape3 {
+            width: 120px;
+            height: 120px;
+            background: #64B5F6;
+            bottom: 10%;
+            left: 20%;
+            animation-delay: 2s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(10deg); }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+            max-width: 800px;
+        }
+
+        .logo {
+            font-size: 4rem;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: none;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            color: rgba(255,255,255,0.95);
+            margin-bottom: 2rem;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-button {
+            background: #fff;
+            color: #FF6B9D;
+            border: none;
+            padding: 1.2rem 3rem;
+            font-size: 1.3rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-family: inherit;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+        }
+
+        .features {
+            padding: 4rem 2rem;
+            background: #fff;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 3rem;
+            color: #FF6B9D;
+            margin-bottom: 3rem;
+            text-shadow: 2px 2px 0px #FFE082;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #FFE082 0%, #FFD93D 100%);
+            padding: 2rem;
+            border-radius: 30px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px) rotate(2deg);
+        }
+
+        .feature-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            color: #FF6B9D;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .products {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #E1F5FE 0%, #B3E5FC 100%);
+        }
+
+        .products h2 {
+            text-align: center;
+            font-size: 3rem;
+            color: #0288D1;
+            margin-bottom: 3rem;
+            text-shadow: 2px 2px 0px #FFE082;
+        }
+
+        .product-showcase {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            justify-content: center;
+        }
+
+        .product-item {
+            background: #fff;
+            border-radius: 30px;
+            padding: 2rem;
+            width: 300px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .product-item:hover {
+            transform: scale(1.05);
+        }
+
+        .product-emoji {
+            font-size: 5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .product-item h3 {
+            color: #FF6B9D;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .product-item p {
+            color: #666;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .contact {
+            padding: 4rem 2rem;
+            background: #f8f9fa;
+        }
+
+        .contact h2 {
+            text-align: center;
+            font-size: 3rem;
+            color: #6366f1;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-text {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .email-link {
+            display: inline-block;
+            font-size: 1.5rem;
+            color: #6366f1;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 1rem 2rem;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .email-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.3);
+        }
+
+        footer {
+            background: #333;
+            color: #fff;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2.5rem;
+            }
+
+            .tagline {
+                font-size: 1.3rem;
+            }
+
+            .features h2, .products h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="floating-shape shape1"></div>
+        <div class="floating-shape shape2"></div>
+        <div class="floating-shape shape3"></div>
+        
+        <div class="hero-content">
+            <h1 class="logo">Banana Ramble</h1>
+            <p class="tagline">Where Learning Meets Play!</p>
+            <button class="cta-button" onclick="scrollToProducts()">Explore Our World</button>
+        </div>
+    </section>
+
+    <section class="features">
+        <h2>Why Kids Love Us</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3>Creative Apps</h3>
+                <p>Interactive apps that spark imagination and encourage creative expression through art, music, and storytelling.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🧸</div>
+                <h3>Safe Toys</h3>
+                <p>Thoughtfully designed toys made with child-safe materials that parents trust and kids adore.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌈</div>
+                <h3>Educational Fun</h3>
+                <p>Learning disguised as play! Our products help develop skills while keeping kids entertained for hours.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⭐</div>
+                <h3>Award Winning</h3>
+                <p>Recognized by parents and educators worldwide for quality, innovation, and positive impact on development.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="products" id="products">
+        <h2>Our Products</h2>
+        <div class="product-showcase">
+            <div class="product-item">
+                <div class="product-emoji">📱</div>
+                <h3>Heart Words</h3>
+                <p>The easy and fun way to teach your kids to read</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2>Get in Touch</h2>
+        <div class="contact-container">
+            <p class="contact-text">Have questions about our products or want to learn more? We'd love to hear from you!</p>
+            <a href="mailto:info@bananaramble.com" class="email-link">info@bananaramble.com</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Banana Ramble. Toys for smart kids.</p>
+    </footer>
+
+    <script>
+        function scrollToProducts() {
+            document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
